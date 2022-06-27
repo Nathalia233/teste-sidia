@@ -1,0 +1,17 @@
+<mat-toolbar>
+    <mat-icon routerLink="/feed">home</mat-icon>
+</mat-toolbar>
+<mat-card class="editar">
+    <p>Create Post</p>
+    <div >
+    <mat-form-field  appearance="fill">
+        <mat-label>Title</mat-label>
+        <input id="title" matInput  [(ngModel)]="post.title" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Text</mat-label>
+        <textarea id="text" matInput [(ngModel)]="post.body" required></textarea>
+    </mat-form-field>
+    <button disabled="frm.invalid" type="submit">Salvar</button>
+    </div>
+</mat-card>

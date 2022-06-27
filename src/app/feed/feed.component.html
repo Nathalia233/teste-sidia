@@ -1,0 +1,81 @@
+<div class="container">
+    <mat-toolbar>
+        <nav class="barra-superior"> 
+            <mat-icon (click)="getAllUsers()">supervisor_account</mat-icon>
+            <mat-icon  (click)="getAllPosts()"> format_list_bulleted</mat-icon>
+            <mat-icon routerLink="/add">library_add</mat-icon>
+            <mat-icon (click) = "getPhotoAlbum()">collections</mat-icon>
+            <mat-icon (click) = "getUserAlbum()" >collections_bookmark</mat-icon>
+            <mat-icon (click) = "getcomments()" >sms</mat-icon>
+
+        </nav>
+    </mat-toolbar>
+        <mat-card *ngFor="let post of posts">
+            <mat-card-header>
+                <mat-card-title >
+                    <div>{{post.title}}</div>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div>{{post.body}}</div>
+            </mat-card-content>
+            <mat-card *ngFor="let comment of comments">
+                <mat-card-title >
+                    <div>{{comment.name}}</div>
+                </mat-card-title>
+                <mat-card-subtitle >
+                    <div>{{comment.email}}</div>
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <div>{{comment.body}}</div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card-actions>
+                <button (click)="updatePost()" mat-button>Edit</button>
+                <button (click)="deletePost()" mat-button >Delete</button>
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-card *ngFor="let user of users">
+            <mat-card-header>
+                <mat-card-title >
+                    <div><span>Nome: </span>{{user.name}}</div>
+                </mat-card-title>
+                <mat-card-subtitle >
+                    <div><span>Username: </span>{{user.username}}</div>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div><span>Email: </span>{{user.email}}</div>
+                <div><span>Adress:</span></div>
+                <ul>
+                    <div><span>    Street:</span>{{user.address.street}}</div>
+                    <div><span>    Suite:</span>{{user.address.suite}}</div>
+                    <div><span>    City:</span>{{user.address.city}}</div>
+                    <div><span>    Zipcode:</span>{{user.address.zipcode}}</div>
+                    <div><span>    Geo:</span></div>
+                    <ul>
+                    <div><span>    Lat:</span>{{user.address.geo.lat}}</div>
+                    <div><span>    Lng:</span>{{user.address.geo.lng}}</div>
+                    </ul>
+                </ul>
+                <div><span>Phone: </span>{{user.phone}}</div>
+                <div><span>Website: </span>{{user.website}}</div>
+                <div><span>Company:</span></div>
+                    <ul>
+                        <div><span>    Name: </span>{{user.company.name}}</div>
+                        <div><span>    CatchPhrase: </span>{{user.company.catchPhrase}}</div>
+                        <div><span>    BS: </span>{{user.company.bs}}</div>
+                    </ul>
+            </mat-card-content>
+        </mat-card>
+        
+        <mat-card *ngFor="let photo of photos" >
+            <mat-card-header>
+                <mat-card-title >
+                    <div>{{photo.title}}</div>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src= "{{photo.thumbnailUrl}}" >
+        </mat-card>
+</div>
